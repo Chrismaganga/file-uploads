@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload Example</title>
+  <style>
+    /* Styling for the page */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="submit"] {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    h3 {
+      margin-top: 20px;
+    }
+
+    img {
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Upload a File</h1>
+  
+  <!-- Display message if available -->
+  <% if (typeof msg !== 'undefined') { %>
+    <p><%= msg %></p>
+  <% } %>
+
+  <!-- Upload form -->
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="myImage" required>
+    <input type="submit" value="Upload">
+  </form>
+
+  <!-- Display uploaded image if file path is available -->
+  <% if (typeof file !== 'undefined' && file) { %>
+  <h3>Uploaded File:</h3>
+    <img src="<%= file %>" alt="Uploaded Image">
+  <% } %>
+</body>
+</html>

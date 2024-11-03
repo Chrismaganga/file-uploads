@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Upload a File</h1>
+  <% if (typeof msg !== 'undefined') { %>
+    <p><%= msg %></p>
+  <% } %>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <label for="myImage">Choose a file:</label>
+    <input type="file" name="myImage" id="myImage" title="Choose a file to upload">
+    <input type="submit" value="Upload">
+  </form>
+  <% if (typeof file !== 'undefined') { %>
+    <img src="<%= file %>" alt="Uploaded Image" class="uploaded-image">
+    <img src="<%= file %>" alt="Uploaded Image" class="uploaded-image-large">
+  <% } %>
+</body>
+</html>
